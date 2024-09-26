@@ -38,6 +38,10 @@ li .first-btn{
     font-weight: bold;
     
 }
+.imagem{
+    width: 910px;
+    height: 100%;
+}
 
 .menu-item{
     display: flex;
@@ -88,6 +92,7 @@ li .first-btn{
     border: 2px solid #F5F5F5;
 
     margin-right: 35px;
+    border-radius: 20px;
 
     margin-bottom: 22px;
 
@@ -95,10 +100,12 @@ li .first-btn{
 }
 
 .card:hover {
-    border-color: #2E245E;
+    border-color: #2d2456;
+    border-radius: 20px;
 }
 
 .card-img-container {
+    border-radius: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -114,7 +121,7 @@ li .first-btn{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #2E245E;
+    background-color: #1c1737;
     color: #FFF;
     width: 70px;
     height: 24px;
@@ -188,10 +195,12 @@ li .first-btn{
 .search-container {
     width: 350px;
     margin-bottom: 30px;
+   
 
 }
 
 .txtSearch {
+    
     color: #333333;
     background-color: #F5F5F5;
     width: 231px;
@@ -222,8 +231,8 @@ li .first-btn{
 
     color: #FFF;
     border-color: transparent;
-
-    background: #37268C;
+    border-radius: 10px;
+    background: #181136;
     width: 96px;
     height: 50px;
     transition: 0.5s;
@@ -248,16 +257,18 @@ li .first-btn{
     max-width: 347px;
     height: 214px;
     overflow-x: auto;
+    border-radius: 10px;
     
 }
 
 .cart-title {
+    border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 50px;
     width: 347px;
-    background: #37268C;
+    background: #130e2d;
     font-weight: 700;
     font-size: 18px;
     color: #FFFFFF
@@ -276,7 +287,7 @@ li .first-btn{
 .cart-container span {
     margin-top: 10px;
     display: inline-block;
-    color: #242424;
+    color: #161515;
     font-weight: 400;
     font-size: 14px;
     text-align: center;
@@ -287,7 +298,7 @@ section .cart-box {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background: #333333;
+    background: #141414;
     font-weight: 600;
     font-size: 16px;
     color: #fff;

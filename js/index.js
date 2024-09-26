@@ -71,17 +71,19 @@ function menuInputListener(productList,section){
 
 
 
-function interceptMenu(event){
- menuItem = event.target
+function interceptMenu(event) {
+    let menuItem = event.target;
 
- if(menuItem.tagName == "BUTTON"){
-    let menuInput = menuItem.innerText
-    let menuResult = categorySearchEngine(menuInput,data)
-    
+    if (menuItem.tagName == "BUTTON") {
+        let menuInput = menuItem.innerText;
 
-    listProducts(menuResult,section)
-    
- }
+        if (menuInput === "Todos") {
+            listProducts(data, section);
+        } else {
+            let menuResult = categorySearchEngine(menuInput, data);
+            listProducts(menuResult, section);
+        }
+    }
 }
 
 
@@ -99,33 +101,35 @@ function categorySearchEngine(input,list){
     return searchResult
 }
 
-function search(productList,section) {
-    let btnSearch = document.querySelector('.btnSearch')
-    let txtSearch = document.querySelector('.txtSearch')
+function search(productList, section) {
+    let btnSearch = document.querySelector('.btnSearch');  // Seleciona o botão de busca
+    let txtSearch = document.querySelector('.txtSearch');  // Seleciona o campo de texto
 
     btnSearch.addEventListener("click", function () {
-        
-        let searchInput = txtSearch.value
-
-        let searchResult = searchEngine(searchInput, productList)
-        
-        listProducts(searchResult,section)
-    })
+        let searchInput = txtSearch.value.trim();  // Pega o valor da busca e remove espaços em branco
+        if (searchInput !== "") {  // Verifica se o campo de busca não está vazio
+            let searchResult = searchEngine(searchInput, productList);  // Busca produtos pelo nome
+            listProducts(searchResult, section);  // Lista os produtos encontrados
+        }
+    });
 }
 
 
 
 function searchEngine(searchValue, productList) {
-    let searchResult = []
+    let searchResult = [];
+    let normalizedSearchValue = searchValue.toLowerCase();  // Converter a entrada de busca para minúsculas
 
     for (let i = 0; i < productList.length; i++) {
-        if (searchValue == productList[i].nameItem) {
-            searchResult.push(productList[i])
+        let normalizedProductName = productList[i].nameItem.toLowerCase();  // Converter o nome do produto para minúsculas
+        if (normalizedProductName.includes(normalizedSearchValue)) {  // Verificar se o nome do produto contém o valor da busca
+            searchResult.push(productList[i]);
         }
     }
 
-    return searchResult
+    return searchResult;  // Retorna os resultados da busca
 }
+
 
 function showcaseListener() {
     let showcase = document.querySelector('.cards-list')
