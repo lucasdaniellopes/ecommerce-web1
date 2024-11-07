@@ -80,9 +80,9 @@ WSGI_APPLICATION = 'weartake_django.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'weartake_django',
-        'USER': 'lucasdaniel',
-        'PASSWORD': '92933432',
+        'NAME': 'web',
+        'USER': 'mayckon',
+        'PASSWORD': '99948949',
         'HOST': 'localhost',
         'PORT': '5432',
     }
