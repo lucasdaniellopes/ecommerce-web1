@@ -1,0 +1,50 @@
+{% extends "loja/base.html" %} 
+{% load static %}
+
+{% block title %}Produtos Disponíveis{% endblock%} 
+
+{% block content %}
+
+<div class="search-container">
+  <form method="GET" action="{% url 'produto-list' %}">
+    <input
+      type="text"
+      name="q"
+      class="txtSearch"
+      placeholder="Buscar produtos..."
+      value="{{ request.GET.q }}"
+      id = "search-input"
+    />
+    <button type="submit" class="btnSearch">Pesquisar</button>
+  </form>
+</div>
+
+<div class="cards-box">
+  <div class="cards-list">
+    {% for produto in produtos %}
+    <a href="{% url 'produto-detail' produto.id %}" class="product-link">
+      <div class="card product-item">
+        <div class="card-img-container">
+          <img
+            src="{{ produto.imagem.url }}"
+            alt="{{ produto.nome }}"
+            class="product-image card-img"
+          />
+        </div>
+        <span class="card-category">{{ produto.categoria.nome }}</span>
+        <h2 class="card-title">{{ produto.nome }}</h2>
+        <p class="card-description">{{ produto.descricao }}</p>
+        <p class="card-price">R$ {{ produto.preco }}</p>
+        <button class="card-add-cart">Adicionar ao Carrinho</button>
+      </div>
+    </a>
+    {% empty %}
+    <p>Nenhum produto disponível.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{% static 'loja/js/produto_list.js' %}"></script>
+{% endblock %}
