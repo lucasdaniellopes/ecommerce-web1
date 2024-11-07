@@ -20,12 +20,19 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
+from contas.views import RegisterView, CustomLoginView, redirect_to_login
+from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('loja.urls')), 
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
+    path("contas/", include("contas.urls")),
+    path("register/", RegisterView.as_view(), name="register"),
+    path("login/", CustomLoginView.as_view(), name="login"),
+    path("logout/", LogoutView.as_view(), name="logout"),
+    path("", redirect_to_login, name="root_redirect"),
 ]
 
 if settings.DEBUG:

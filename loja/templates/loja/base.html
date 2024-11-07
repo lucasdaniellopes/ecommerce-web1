@@ -33,7 +33,10 @@
             <i class="fas fa-user"></i>
           </button>
           <div class="dropdown-content">
-            <a href="{% url 'logout' %}"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a>
+            <form action="{% url 'logout' %}" method="post">
+              {% csrf_token %}
+              <button type="submit"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</button>
+            </form>
           </div>
         </div>
     </div>
