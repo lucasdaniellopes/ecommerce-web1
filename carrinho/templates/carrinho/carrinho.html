@@ -1,0 +1,34 @@
+{% extends "loja/base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'carrinho/css/style.css' %}">
+{% endblock %}
+
+{% block title %}Seu Carrinho{% endblock %}
+
+{% block content %}
+<div class="cart-container">
+  <h2 class="cart-title">Seu Carrinho</h2>
+
+  {% if carrinho.itens.exists %}
+    <ul class="cart-items">
+      {% for item in carrinho.itens.all %}
+        <li class="cart-item">
+          <span class="cart-item-name">{{ item.produto.nome }}</span>
+          <span class="cart-item-quantity">{{ item.quantidade }} x {{ item.produto.preco|floatformat:2 }}</span>
+          <span class="cart-item-subtotal">{{ item.subtotal|floatformat:2 }}</span>
+          <form action="{% url 'carrinho:remover_item' item.pk %}" method="post" class="remove-item-form">
+            {% csrf_token %}
+            <button type="submit" class="remove-item-button">Remover</button>
+          </form>
+        </li>
+      {% endfor %}
+    </ul>
+    <h3 class="cart-total">Total: {{ carrinho.total|floatformat:2 }}</h3>
+  {% else %}
+    <p class="cart-empty">Seu carrinho está vazio.</p>
+  {% endif %}
+</div>
+{% endblock %}
+

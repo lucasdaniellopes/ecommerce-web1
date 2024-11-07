@@ -148,8 +148,6 @@ header {
   color: #2a1e6a;
   font-size: 14px;
   font-weight: 500;
-  margin-bottom: 25px;
-  margin-left: 15px;
   line-height: 16px;
   transition: 0.4s;
   border-bottom: 1px solid transparent;
@@ -242,24 +240,21 @@ header {
   background: #291f50;
 }
 
-/* Carrinho */
 .cart-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background: #f5f5f5;
-  max-width: 347px;
   height: 214px;
   overflow-x: auto;
   border-radius: 10px;
 }
-
 .cart-title {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80px;
+  height: 100%;
   width: 347px;
   background: #130e2d;
   font-weight: 700;
@@ -308,7 +303,6 @@ header {
   margin-top: -20px;
   padding-top: 15px;
   border-radius: 10px 10px 0px 0px;
-  
 }
 
 .product-detail-image {
@@ -319,7 +313,6 @@ header {
   border-radius: 10px;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
   margin-bottom: 25px;
-
 }
 
 .product-detail p {
@@ -327,7 +320,6 @@ header {
   line-height: 1.6;
   color: #000000;
   margin-bottom: 15px;
-  
 }
 
 .product-detail p strong {
@@ -337,6 +329,20 @@ header {
 
 .product-detail p:last-child {
   margin-bottom: 0;
+}
+
+form .quant_input {
+  border: 2px solid #37268c;
+  width: 20%;
+  border-radius: 4px;
+  outline: none;
+}
+
+.card_form {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 16px 10px 15px;
+  align-items: center;
 }
 
 .product-detail p:first-child {

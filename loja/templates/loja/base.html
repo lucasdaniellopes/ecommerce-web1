@@ -7,7 +7,8 @@
   <title>{% block title %}E-commerce{% endblock %}</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" crossorigin="anonymous">
   <link rel="stylesheet" href="{% static 'loja/css/reset.css' %}" />
-  <link rel="stylesheet" href="{% static 'loja/css/style.css' %}" />
+  <link rel="stylesheet" href="{% static 'loja/css/loja.css' %}" />
+  {% block extra_css %}{% endblock %}
 </head>
 <body>
   <header>
@@ -25,9 +26,12 @@
         </ul>
       </nav>
       <div class="options">
-        <a href="#" class="cart-icon">
-          <i class="fas fa-shopping-cart"></i> 
-        </a>
+          <div class="cart-icon">
+          <a href="{% url 'carrinho:ver_carrinho' %}">
+              <i class="fas fa-shopping-cart"></i>
+              <span id="cart-item-count">{{ cart_item_count }}</span>
+          </a>
+        </div>
         <div class="profile-dropdown">
           <button class="profile-btn">
             <i class="fas fa-user"></i>

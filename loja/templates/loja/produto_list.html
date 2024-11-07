@@ -22,8 +22,9 @@
 <div class="cards-box">
   <div class="cards-list">
     {% for produto in produtos %}
-    <a href="{% url 'produto-detail' produto.id %}" class="product-link">
+   
       <div class="card product-item">
+        <a href="{% url 'produto-detail' produto.id %}" class="product-link">
         <div class="card-img-container">
           <img
             src="{{ produto.imagem.url }}"
@@ -35,14 +36,21 @@
         <h2 class="card-title">{{ produto.nome }}</h2>
         <p class="card-description">{{ produto.descricao }}</p>
         <p class="card-price">R$ {{ produto.preco }}</p>
-        <button class="card-add-cart">Adicionar ao Carrinho</button>
-      </div>
-    </a>
+      </a>
+    
+    <form action="{% url 'carrinho:adicionar_item' %}" method="post" class="card_form">
+      {% csrf_token %}
+      <input type="hidden" name="produto_id" value="{{ produto.id }}">
+      <input type="number" name="quantidade" value="1" min="1" class="quant_input" data-produto-id="{{ produto.id }}">
+      <button type="submit" class="card-add-cart" data-produto-id="{{ produto.id }}">Adicionar ao Carrinho</button>
+  </form>
+</div>
     {% empty %}
     <p>Nenhum produto disponível.</p>
     {% endfor %}
   </div>
 </div>
+
 {% endblock %}
 
 {% block extra_js %}

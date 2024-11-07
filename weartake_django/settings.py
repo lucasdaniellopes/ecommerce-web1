@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'catalogo',
     'loja',
-    'contas'
+    'contas',
+    'carrinho'
 ]
 
 MIDDLEWARE = [
@@ -57,7 +58,9 @@ ROOT_URLCONF = 'weartake_django.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            BASE_DIR / "templates",
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -66,6 +69,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'catalogo.context_processors.categorias_disponiveis',
+                'loja.context_processors.cart_item_count'
             ],
         },
     },
@@ -80,9 +84,9 @@ WSGI_APPLICATION = 'weartake_django.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'web',
-        'USER': 'mayckon',
-        'PASSWORD': '99948949',
+        'NAME': 'weartake_django',
+        'USER': 'lucasdaniel',
+        'PASSWORD': '92933432',
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -124,7 +128,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'loja/static'),  # Ajuste o caminho conforme a estrutura do projeto
 ]

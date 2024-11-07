@@ -2,21 +2,21 @@ import os
 import django
 from django.utils.text import slugify
 
-# Configura o ambiente Django para acessar os modelos
+
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'weartake_django.settings')
 django.setup()
 
 from catalogo.models import Produto, Categoria
 
-# Apaga todos os produtos existentes
+
 Produto.objects.all().delete()
 print("Todos os produtos foram apagados.")
 
-# Dados dos produtos com o caminho de imagem atualizado
+
 data = [
     {
         "id": 1,
-        "img": "loja/img/jaqueta.svg",  # Caminho dentro da pasta static
+        "img": "loja/img/jaqueta.svg",  
         "nameItem": "Lightweight Jacket",
         "description": "Adicione um pouco de energia ao seu guarda-roupa de inverno com esta jaqueta vibrante...",
         "value": 100,
@@ -64,26 +64,26 @@ data = [
     },
 ]
 
-# Popula o banco de dados
-for item in data:
-    # Define o nome e slug da categoria
-    categoria_nome = item["tag"][0]
-    categoria_slug = slugify(categoria_nome)  # Gera um slug único baseado no nome
 
-    # Obtém ou cria a categoria com o slug e nome
+for item in data:
+    
+    categoria_nome = item["tag"][0]
+    categoria_slug = slugify(categoria_nome)  
+
+    
     categoria, created = Categoria.objects.get_or_create(
         nome=categoria_nome,
-        slug=categoria_slug  # Inclui o slug nos critérios de busca
+        slug=categoria_slug  
     )
 
-    # Cria o produto com o caminho da imagem em static/loja/img
+   
     Produto.objects.create(
         nome=item["nameItem"],
         descricao=item["description"],
         preco=item["value"],
-        estoque=10,  # Define um valor padrão para o estoque, ajuste conforme necessário
+        estoque=10,  
         categoria=categoria,
-        imagem=item["img"]  # Caminho da imagem em static/loja/img
+        imagem=item["img"] 
     )
 
 print("Produtos adicionados com sucesso!")

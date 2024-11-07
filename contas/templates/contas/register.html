@@ -1,6 +1,11 @@
-<h2>Registrar</h2>
+{% load static %}
+<link rel="stylesheet" href="{% static 'contas/css/style.css' %}">
+<div class="form-container">
+<h1 class="logo">Weartake</h1>
 <form method="post">
     {% csrf_token %}
+    <h2>Registrar</h2>
     {{ form.as_p }}
     <button type="submit">Registrar</button>
 </form>
+</div>

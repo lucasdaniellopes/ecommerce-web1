@@ -33,6 +33,7 @@ urlpatterns = [
     path("login/", CustomLoginView.as_view(), name="login"),
     path("logout/", LogoutView.as_view(), name="logout"),
     path("", redirect_to_login, name="root_redirect"),
+    path('carrinho/', include('carrinho.urls')),
 ]
 
 if settings.DEBUG:
